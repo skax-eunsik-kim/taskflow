@@ -36,8 +36,8 @@ function listTasks({ status, q } = {}) {
   if (status) {
     result = result.filter((task) => task.status === status);
   }
-  if (q) {
-    const keyword = String(q).toLowerCase();
+  const keyword = q === undefined ? '' : String(q).trim().toLowerCase();
+  if (keyword) {
     result = result.filter(
       (task) =>
         task.title.toLowerCase().includes(keyword) ||
