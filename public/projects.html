@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — 프로젝트</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/shared.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>프로젝트</h1>
+    <p class="tagline">작업을 프로젝트로 묶어 관리하세요</p>
+  </header>
+
+  <div class="page-grid">
+    <section class="panel">
+      <h2>새 프로젝트</h2>
+      <form id="project-form" class="inline-form">
+        <input id="project-name" type="text" placeholder="프로젝트 이름" required />
+        <input id="project-description" type="text" placeholder="설명 (선택)" />
+        <button type="submit">만들기</button>
+      </form>
+      <ul id="project-list" class="simple-list"></ul>
+    </section>
+
+    <section class="panel" id="detail-panel" hidden>
+      <h2 id="detail-title"></h2>
+      <p id="detail-description" class="meta"></p>
+      <div class="inline-form">
+        <select id="assign-select"></select>
+        <button id="assign-button" type="button">작업 배정</button>
+      </div>
+      <ul id="detail-tasks" class="simple-list"></ul>
+    </section>
+  </div>
+
+  <footer class="site-nav">
+    <a href="/">보드</a>
+    <a href="/projects.html" class="current">프로젝트</a>
+    <a href="/stats.html">통계</a>
+  </footer>
+
+  <script src="/projects.js"></script>
+</body>
+</html>
