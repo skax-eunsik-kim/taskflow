@@ -13,6 +13,18 @@ body {
   background: #1d4ed8;
   color: #fff;
   padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#theme-toggle {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  font-size: 18px;
+  padding: 6px 12px;
+  cursor: pointer;
 }
 
 .tagline {
@@ -170,4 +182,57 @@ main {
   color: #94a3b8;
   text-align: center;
   padding: 24px 0;
+}
+
+body.dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark .topbar {
+  background: #1e293b;
+}
+
+body.dark .create-panel,
+body.dark .board-panel {
+  background: #1e293b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+body.dark #create-form input,
+body.dark #create-form textarea,
+body.dark #search-input,
+body.dark .status-select {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+body.dark .task {
+  border-color: #334155;
+}
+
+body.dark .filter {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+body.dark .filter.active {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #fff;
+}
+
+body.dark .badge {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+body.dark .task-desc {
+  color: #94a3b8;
+}
+
+body.dark .delete-btn {
+  background: #1e293b;
 }
