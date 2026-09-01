@@ -56,7 +56,19 @@ function render(tasks) {
       });
       fetchTasks();
     });
-    li.querySelector('.delete-btn').addEventListener('click', async () => {
+    const deleteBtn = li.querySelector('.delete-btn');
+    let confirmTimer = null;
+    deleteBtn.addEventListener('click', async () => {
+      if (!deleteBtn.classList.contains('confirming')) {
+        deleteBtn.classList.add('confirming');
+        deleteBtn.textContent = '정말 삭제?';
+        confirmTimer = setTimeout(() => {
+          deleteBtn.classList.remove('confirming');
+          deleteBtn.textContent = '삭제';
+        }, 3000);
+        return;
+      }
+      clearTimeout(confirmTimer);
       await fetch(`/api/tasks/${task.id}`, { method: 'DELETE' });
       fetchTasks();
     });

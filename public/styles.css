@@ -166,6 +166,12 @@ main {
   cursor: pointer;
 }
 
+.delete-btn.confirming {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  color: #fff;
+}
+
 .empty {
   color: #94a3b8;
   text-align: center;
