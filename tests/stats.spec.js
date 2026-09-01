@@ -24,6 +24,12 @@ test('computeStats groups by assignee with fallback label', () => {
   assert.strictEqual(stats.byAssignee['(미지정)'], 1);
 });
 
+test('computeStats returns 0% doneRatio for empty task list', () => {
+  const stats = computeStats([]);
+  assert.strictEqual(stats.total, 0);
+  assert.strictEqual(stats.doneRatio, 0);
+});
+
 test('computeStats doneRatio for a non-empty list', () => {
   const stats = computeStats([
     { status: 'done', assignee: null },

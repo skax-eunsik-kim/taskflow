@@ -11,7 +11,7 @@ function computeStats(tasks) {
     byAssignee[key] = (byAssignee[key] || 0) + 1;
   }
   const total = tasks.length;
-  const doneRatio = Math.round((byStatus.done / total) * 100);
+  const doneRatio = total === 0 ? 0 : Math.round((byStatus.done / total) * 100);
   return { total, byStatus, byAssignee, doneRatio };
 }
 
