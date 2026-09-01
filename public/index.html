@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>TaskFlow</h1>
+    <p class="tagline">팀 작업을 한 곳에서 관리하세요</p>
+  </header>
+
+  <main>
+    <section class="create-panel">
+      <h2>새 작업</h2>
+      <form id="create-form">
+        <input id="title-input" type="text" placeholder="작업 제목" required />
+        <input id="assignee-input" type="text" placeholder="담당자 (선택)" />
+        <textarea id="description-input" placeholder="설명 (선택)"></textarea>
+        <button type="submit">추가</button>
+      </form>
+    </section>
+
+    <section class="board-panel">
+      <div class="toolbar">
+        <input id="search-input" type="search" placeholder="작업 검색..." />
+        <div class="filters" role="group" aria-label="상태 필터">
+          <button data-status="" class="filter active">전체</button>
+          <button data-status="todo" class="filter">할 일</button>
+          <button data-status="in_progress" class="filter">진행 중</button>
+          <button data-status="done" class="filter">완료</button>
+        </div>
+      </div>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty-message" class="empty" hidden>표시할 작업이 없습니다.</p>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
