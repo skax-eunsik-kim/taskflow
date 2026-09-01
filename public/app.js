@@ -13,6 +13,12 @@ const STATUS_LABELS = {
   done: '완료'
 };
 
+const PRIORITY_LABELS = {
+  high: '높음',
+  medium: '보통',
+  low: '낮음'
+};
+
 async function fetchTasks() {
   const params = new URLSearchParams();
   if (state.status) params.set('status', state.status);
@@ -31,6 +37,7 @@ function render(tasks) {
     li.innerHTML = `
       <div class="task-main">
         <span class="task-title"></span>
+        <span class="priority-badge"></span>
         <span class="badge"></span>
       </div>
       <p class="task-desc"></p>
@@ -45,6 +52,9 @@ function render(tasks) {
     `;
     li.querySelector('.task-title').textContent = task.title;
     li.querySelector('.badge').textContent = STATUS_LABELS[task.status] || task.status;
+    const priorityEl = li.querySelector('.priority-badge');
+    priorityEl.textContent = PRIORITY_LABELS[task.priority] || '보통';
+    priorityEl.classList.add(`priority-${task.priority || 'medium'}`);
     li.querySelector('.task-desc').textContent = task.description || '';
     const select = li.querySelector('.status-select');
     select.value = task.status;
@@ -69,10 +79,11 @@ formEl.addEventListener('submit', async (event) => {
   const title = document.getElementById('title-input').value;
   const assignee = document.getElementById('assignee-input').value;
   const description = document.getElementById('description-input').value;
+  const priority = document.getElementById('priority-input').value;
   const res = await fetch('/api/tasks', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title, assignee, description })
+    body: JSON.stringify({ title, assignee, description, priority })
   });
   if (res.ok) {
     formEl.reset();

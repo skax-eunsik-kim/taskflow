@@ -137,6 +137,29 @@ main {
   color: #854d0e;
 }
 
+.priority-badge {
+  font-size: 12px;
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.priority-high {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.priority-medium {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.priority-low {
+  background: #f1f5f9;
+  color: #475569;
+}
+
 .task-desc {
   font-size: 13px;
   color: #64748b;
