@@ -1,0 +1,15 @@
+{
+  "name": "taskflow",
+  "version": "0.3.0",
+  "description": "팀 작업 관리를 위한 경량 태스크 보드",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.spec.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "license": "MIT"
+}
