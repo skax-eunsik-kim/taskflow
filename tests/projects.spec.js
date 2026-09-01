@@ -35,6 +35,17 @@ test('updateProject changes name and description', () => {
   projects.deleteProject(project.id);
 });
 
+test('computeProgress returns done ratio of resolvable tasks', () => {
+  const project = { taskIds: [1, 2, 99999] };
+  const getTask = (id) =>
+    ({ 1: { status: 'done' }, 2: { status: 'todo' } })[id] || null;
+  assert.strictEqual(projects.computeProgress(project, getTask), 50);
+});
+
+test('computeProgress returns 0 for empty project', () => {
+  assert.strictEqual(projects.computeProgress({ taskIds: [] }, () => null), 0);
+});
+
 test('deleteProject returns false for unknown id', () => {
   assert.strictEqual(projects.deleteProject(99999), false);
 });

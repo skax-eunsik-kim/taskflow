@@ -10,7 +10,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
   const list = projects.listProjects().map((project) => ({
     ...project,
-    taskCount: project.taskIds.length
+    taskCount: project.taskIds.length,
+    progress: projects.computeProgress(project, store.getTask)
   }));
   res.json({ projects: list });
 });
@@ -31,7 +32,8 @@ router.get('/:id', (req, res) => {
     return res.status(404).json({ error: 'project not found' });
   }
   const tasks = project.taskIds.map((taskId) => store.getTask(taskId)).filter(Boolean);
-  res.json({ project: { ...project, tasks } });
+  const progress = projects.computeProgress(project, store.getTask);
+  res.json({ project: { ...project, tasks, progress } });
 });
 
 router.patch('/:id', (req, res) => {

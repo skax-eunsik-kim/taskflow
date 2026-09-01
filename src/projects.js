@@ -73,8 +73,16 @@ function unassignTask(projectId, taskId) {
   return project;
 }
 
+function computeProgress(project, getTask) {
+  const tasks = project.taskIds.map((taskId) => getTask(taskId)).filter(Boolean);
+  if (tasks.length === 0) return 0;
+  const done = tasks.filter((task) => task.status === 'done').length;
+  return Math.round((done / tasks.length) * 100);
+}
+
 module.exports = {
   listProjects,
+  computeProgress,
   getProject,
   createProject,
   updateProject,
