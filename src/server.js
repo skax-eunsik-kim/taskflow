@@ -3,10 +3,19 @@
 const path = require('path');
 const express = require('express');
 const store = require('./store');
+const projectsRouter = require('./routes/projects');
+const commentsRouter = require('./routes/comments');
+const tagsRouter = require('./routes/tags');
+const miscRouter = require('./routes/misc');
 
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+app.use('/api/projects', projectsRouter);
+app.use('/api/tasks/:taskId/comments', commentsRouter);
+app.use('/api/tasks/:taskId/tags', tagsRouter);
+app.use('/api', miscRouter);
 
 app.get('/api/health', (req, res) => {
   res.json({ ok: true, service: 'taskflow' });

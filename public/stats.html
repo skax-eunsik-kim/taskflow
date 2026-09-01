@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — 통계</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/shared.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>통계</h1>
+    <p class="tagline">팀의 진행 상황을 한눈에 확인하세요</p>
+  </header>
+
+  <div class="page-grid">
+    <section class="panel">
+      <h2>요약</h2>
+      <div id="stat-cards" class="stat-cards"></div>
+    </section>
+
+    <section class="panel">
+      <h2>담당자별 작업</h2>
+      <ul id="assignee-list" class="simple-list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>최근 활동</h2>
+      <ul id="activity-list" class="simple-list"></ul>
+      <p id="activity-empty" class="meta" hidden>아직 기록된 활동이 없습니다.</p>
+    </section>
+  </div>
+
+  <footer class="site-nav">
+    <a href="/">보드</a>
+    <a href="/projects.html">프로젝트</a>
+    <a href="/stats.html" class="current">통계</a>
+  </footer>
+
+  <script src="/stats.js"></script>
+</body>
+</html>
