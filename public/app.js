@@ -94,4 +94,19 @@ document.querySelectorAll('.filter').forEach((button) => {
   });
 });
 
+const themeToggle = document.getElementById('theme-toggle');
+
+function applyTheme(theme) {
+  document.body.classList.toggle('dark', theme === 'dark');
+  themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+themeToggle.addEventListener('click', () => {
+  const next = document.body.classList.contains('dark') ? 'light' : 'dark';
+  localStorage.setItem('taskflow-theme', next);
+  applyTheme(next);
+});
+
+applyTheme(localStorage.getItem('taskflow-theme') || 'light');
+
 fetchTasks();
