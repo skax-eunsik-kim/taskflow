@@ -15,6 +15,17 @@ test('listTasks matches keyword in title or description', () => {
   assert.ok(result.some((task) => task.title.includes('회의록')));
 });
 
+test('listTasks trims surrounding whitespace in keyword', () => {
+  const result = store.listTasks({ q: '  회의록  ' });
+  assert.ok(result.some((task) => task.title.includes('회의록')));
+});
+
+test('listTasks with whitespace-only keyword returns all tasks', () => {
+  const all = store.listTasks();
+  const result = store.listTasks({ q: '   ' });
+  assert.strictEqual(result.length, all.length);
+});
+
 test('createTask assigns id and default status', () => {
   const task = store.createTask({ title: '테스트 작업' });
   assert.ok(task.id > 0);
