@@ -18,6 +18,11 @@
       <form id="create-form">
         <input id="title-input" type="text" placeholder="작업 제목" required />
         <input id="assignee-input" type="text" placeholder="담당자 (선택)" />
+        <select id="priority-input" aria-label="우선순위">
+          <option value="medium" selected>보통</option>
+          <option value="high">높음</option>
+          <option value="low">낮음</option>
+        </select>
         <textarea id="description-input" placeholder="설명 (선택)"></textarea>
         <button type="submit">추가</button>
       </form>

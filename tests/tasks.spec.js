@@ -23,6 +23,19 @@ test('createTask assigns id and default status', () => {
   store.deleteTask(task.id);
 });
 
+test('createTask defaults priority to medium', () => {
+  const task = store.createTask({ title: '우선순위 기본값' });
+  assert.strictEqual(task.priority, 'medium');
+  store.deleteTask(task.id);
+});
+
+test('updateTask changes priority', () => {
+  const task = store.createTask({ title: '우선순위 변경 대상', priority: 'low' });
+  const updated = store.updateTask(task.id, { priority: 'high' });
+  assert.strictEqual(updated.priority, 'high');
+  store.deleteTask(task.id);
+});
+
 test('updateTask changes status', () => {
   const task = store.createTask({ title: '상태 변경 대상' });
   const updated = store.updateTask(task.id, { status: 'done' });
