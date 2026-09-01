@@ -19,7 +19,7 @@ async function fetchProjects() {
     label.textContent = project.name;
     const meta = document.createElement('span');
     meta.className = 'meta';
-    meta.textContent = `작업 ${project.taskCount}개`;
+    meta.textContent = `작업 ${project.taskCount}개 · ${project.progress}% 완료`;
     const openButton = document.createElement('button');
     openButton.textContent = '열기';
     openButton.addEventListener('click', () => openProject(project.id));
