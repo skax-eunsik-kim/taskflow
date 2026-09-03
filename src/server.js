@@ -2,6 +2,7 @@
 
 const path = require('path');
 const express = require('express');
+const { version } = require('../package.json');
 const store = require('./store');
 const projectsRouter = require('./routes/projects');
 const commentsRouter = require('./routes/comments');
@@ -18,7 +19,7 @@ app.use('/api/tasks/:taskId/tags', tagsRouter);
 app.use('/api', miscRouter);
 
 app.get('/api/health', (req, res) => {
-  res.json({ ok: true, service: 'taskflow' });
+  res.json({ ok: true, service: 'taskflow', version });
 });
 
 app.get('/api/tasks', (req, res) => {
